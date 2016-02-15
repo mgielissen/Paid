@@ -13,7 +13,8 @@
         'views/saas_template_database_views.xml',
         'views/res_partner.xml',
         'data/website.menu.csv',
-        'security/ir.model.access.csv',
+        'data/ir.cron.csv',
+        'security/ir.model.access.csv',        
     ],
     'demo': [],
     'images':[
@@ -22,6 +23,6 @@
         'static/description/3.jpg',
         'static/description/4.jpg',
     ],
-    'depends': ['website'],
+    'depends': ['website','payment_paypal'],
     'installable': True,
 }

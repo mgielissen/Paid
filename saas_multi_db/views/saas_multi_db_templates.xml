@@ -1,69 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<data>
-
-<template id="saas_submit" name="Enter Package Details" page="True">
-    <t t-call="website.layout">
-      <div id="wrap" class="oe_structure oe_empty">
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="text-center">Enter Details</h1>
-            </div>
-          </div>
-        </div>
-      </section>
-        <div class="col-md-8">
-        <form action="/saas/createdb" method="GET" class="form-horizontal mt32" enctype="multipart/form-data">
-            <div t-attf-class="form-group">
-                <label class="col-md-3 col-sm-4 control-label" for="person_name">Your Name</label>
-                <div class="col-md-7 col-sm-8">
-                    <input type="text" class="form-control" name="person_name" required="True"/>
-                </div>
-            </div>
-
-            <div name="email_from_container" t-attf-class="form-group">
-                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
-                <div class="col-md-7 col-sm-8">
-                    <input type="email" class="form-control" name="email" required="True"/>
-                </div>
-            </div>
-
-            <div t-attf-class="form-group">
-                <label class="col-md-3 col-sm-4 control-label" for="system_name">System Name</label>
-                <div class="col-md-7 col-sm-8">
-                    <input type="text" class="form-control" name="system_name" required="True"/>
-                </div>
-            </div>
-
-            <div t-attf-class="form-group">
-                <label class="col-md-3 col-sm-4 control-label" for="password">Password</label>
-                <div class="col-md-7 col-sm-8">
-                    <input type="password" class="form-control" name="password" required="True"/>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                    <input type="hidden" name="package" t-attf-value="#{template_database.id}"/>
-                    <button class="btn btn-primary btn-lg">Try Now</button>
-                </div>
-            </div>
-        </form>
-        </div>
-        <div class="col-md-4">
-            <img t-att-src="website.image_url(template_database, 'image')" class="img-rounded mb8" t-attf-alt="#{template_database.name}" width="150" height="150"/><br/>
-            <h3 t-field="template_database.name"></h3>
-            <span><t t-esc="template_database.description"/></span><br/>
-            <span>$<t t-esc="template_database.monthly_price"/> / Month</span>
-        </div>
+    <data>
         
-
-      </div>
-    </t>
-    
-</template>
+        <record id="monthly_invoice" model="mail.template">
+            <field name="name">Saas User Monthly Invoice</field>
+            <field name="model_id" ref="model_saas_database"></field>
+            <field name="email_from">${(user.email)|safe}</field>
+            <field name="email_to">${(object.partner_id.email)|safe}</field>
+            <field name="subject">${object.name} System Invoice</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear ${object.partner_id.name},</p>
+                <p>Attached is a invoice for the monthly cost of your system</p>
+                <p>Failing to pay your invoice within the next 2 weeks will result in your system being taken down</p>
+            ]]>
+            </field>
+        </record>
+        
+        <template id="saas_submit" name="Enter Package Details" page="True">
+            <t t-call="website.layout">
+              <div id="wrap" class="oe_structure oe_empty">
+                  <section>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h1 class="text-center">Enter Details</h1>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                    <div class="col-md-8">
+                    <form action="/saas/createdb" method="GET" class="form-horizontal mt32" enctype="multipart/form-data">
+                        <div t-attf-class="form-group">
+                            <label class="col-md-3 col-sm-4 control-label" for="person_name">Your Name</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control" name="person_name" required="True"/>
+                            </div>
+                        </div>
+        
+                        <div name="email_from_container" t-attf-class="form-group">
+                            <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="email" class="form-control" name="email" required="True"/>
+                            </div>
+                        </div>
+        
+                        <div t-attf-class="form-group">
+                            <label class="col-md-3 col-sm-4 control-label" for="system_name">System Name</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text" class="form-control" name="system_name" required="True"/>
+                            </div>
+                        </div>
+        
+                        <div t-attf-class="form-group">
+                            <label class="col-md-3 col-sm-4 control-label" for="password">Password</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="password" class="form-control" name="password" required="True"/>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                <input type="hidden" name="package" t-attf-value="#{template_database.id}"/>
+                                <button class="btn btn-primary btn-lg">Try Now</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="col-md-4">
+                        <img t-att-src="website.image_url(template_database, 'image')" class="img-rounded mb8" t-attf-alt="#{template_database.name}" width="150" height="150"/><br/>
+                        <h3 t-field="template_database.name"></h3>
+                        <span><t t-esc="template_database.description"/></span><br/>
+                        <span>$<t t-esc="template_database.monthly_price"/> / 30 days</span>
+                    </div>                
+                </div>
+            </t>
+        </template>
 
 <template id="saas_choose_package" name="Select Package" page="True">
     <t t-call="website.layout">
@@ -92,7 +103,7 @@
                                         Try Now
                                     </t>
                                     <t t-if="template_database.monthly_price > 0">
-                                        $<span t-field="template_database.monthly_price"></span> / month
+                                        $<span t-field="template_database.monthly_price"></span> / 30 days
                                     </t>                                    
                                 </button>
                             </form>
@@ -103,15 +114,10 @@
             </div>        
         
         
-        </div>
-        
+        </div>        
       </section>
-
-
-
       </div>
     </t>
-    
 </template>
 
 </data>

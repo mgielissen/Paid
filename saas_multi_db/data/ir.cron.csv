@@ -1,0 +1,2 @@
+id,name,model,function,interval_number,interval_type,numbercall,active
+"database_invoice_check","Database Invoice Check",saas.database,invoice_members,1,days,-1,true

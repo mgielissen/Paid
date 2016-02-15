@@ -6,6 +6,7 @@ _logger = logging.getLogger(__name__)
 import os
 import shutil
 import subprocess
+from datetime import datetime, timedelta
 
 import openerp
 import openerp.http as http
@@ -45,6 +46,9 @@ class SaasMultiDB(http.Controller):
 	person_name = values["person_name"]
         demo = False
 
+        if system_name.isalnum() == False:
+            return "Only AlphaNumeric characters allowed"
+
 	#get the template database
 	template_database = request.env['saas.template.database'].browse(int(values["package"]))
 	chosen_template = template_database.database_name + "_clone"
@@ -57,7 +61,8 @@ class SaasMultiDB(http.Controller):
         partner = request.env['res.partner'].sudo().create({'name':person_name, 'email':email, 'saas_partner': True, 'saas_database': system_name})
 	    
 	#Add this database to the saas list
-	request.env['saas.database'].create({'name':system_name, 'partner_id': partner.id, 'login': email, 'password': password})
+	next_invoice_date = datetime.utcnow() + timedelta(days=30)
+	request.env['saas.database'].create({'name':system_name, 'partner_id': partner.id, 'login': email, 'password': password, 'template_database_id': template_database.id, 'next_invoice_date':next_invoice_date, 'plan_price': template_database.monthly_price})
 
         #Create a new instance just for the user
         #if template_database.create_instance:

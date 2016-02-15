@@ -14,6 +14,9 @@
                       <field name="name"/>
                       <field name="partner_id"/>
                       <field name="login"/>
+                      <field name="template_database_id"/>
+                      <field name="plan_price"/>
+                      <field name="next_invoice_date"/>
                   </group>
               </form>
           </field>
@@ -26,6 +29,9 @@
               <tree>
                   <field name="name"/>
                   <field name="partner_id"/>
+                  <field name="template_database_id"/>
+                  <field name="next_invoice_date"/>
+                  <field name="plan_price"/>
               </tree>
           </field>
       </record>

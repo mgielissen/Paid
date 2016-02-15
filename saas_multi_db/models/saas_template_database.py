@@ -16,8 +16,8 @@ class SaasTemplateDatabase(models.Model):
     name = fields.Char(string="Display Name", help="Displayed on the website")
     database_name = fields.Char(string="Database Name", help="The name of the template database in psql")
     image = fields.Binary(string="Image")
-    description = fields.Char(string="Description")
-    monthly_price = fields.Float(string="Monthly Price")
+    description = fields.Char(string="Description", default="Placeholder description")
+    monthly_price = fields.Float(string="Monthly Price", help="The monthly fee the user pays to rent the system")
     create_instance = fields.Boolean(string="Create New Instance")
       
     @api.one
