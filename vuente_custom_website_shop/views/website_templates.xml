@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<template id="end_panel" inherit_id="website_sale.products_categories" active="False" customize_show="True" name="3 Panel Layout">
+  <xpath expr="//div[@id='products_grid']" position="after">
+      <div id="products_grid_after" class="col-md-3 hidden-xs">
+          
+      </div>
+  </xpath>
+
+  <xpath expr="//div[@id='products_grid_before']" position="attributes">
+      <attribute name="class">col-md-3 col-sm-4 hidden-xs</attribute>
+  </xpath>
+  
+  <xpath expr="//div[@id='products_grid']" position="attributes">
+      <attribute name="class">col-md-6 col-sm-8</attribute>
+  </xpath>
+  
+</template>
+
+<template id="end_panel_best_sellers" inherit_id="vuente_custom_website_shop.end_panel" active="False" customize_show="True" name="Top Selling Products">
+  <xpath expr="//div[@id='products_grid_after']" position="inside">
+
+      <div style="text-align:center;">
+          <b>Best Selling Products</b><br/>
+          <br/>
+          <t t-foreach="top_products" t-as="top_product">
+              <t t-esc="top_product.name"/><br/>
+              <img t-att-src="website.image_url(top_product, 'image')" class="img-rounded mb8" t-attf-alt="#{top_product.name}" width="100" height="100"/><br/>
+              $<t t-esc="top_product.list_price"/>
+              <br/>
+              <br/>
+          </t>
+      </div>
+  </xpath>  
+</template>
+
+    </data>
+</openerp>
