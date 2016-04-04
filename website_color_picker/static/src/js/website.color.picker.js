@@ -46,5 +46,21 @@ options.registry.pickfontcolour = options.Class.extend({
     },
 });
 
+options.registry.pickfontfamily = options.Class.extend({
+    fontfamily: function(type) {
+		if (type !== 'click') return;
+		var self = this;
+		this.template = 'website_color_picker.pick_font_modal';
+		self.$modal = $( qweb.render(this.template, {}) );
+		$('body').append(self.$modal);
+        $('#oe_social_share_modal').modal('show');
+
+        self.$modal.find("#sub_map").on('click', function () {
+            self.$target.attr('style', "font-family: '" + self.$modal.find("#fontpick").val() + "'");
+            self.$modal.modal('hide');
+        });
+
+    },
+});
 
 });

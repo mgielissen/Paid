@@ -20,6 +20,11 @@
 		        <a><i class="fa fa-paint-brush"/>Custom Font Colour</a>
                     </li>
                 </div>
+                <div data-js='pickfontfamily' data-selector="div, section">
+		    <li data-fontfamily="">
+		        <a><i class="fa fa-paint-brush"/>Custom Font Family</a>
+                    </li>
+                </div>                
             </xpath>
         </template>
 
