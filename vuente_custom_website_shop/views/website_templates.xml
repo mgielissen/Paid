@@ -10,11 +10,11 @@
   </xpath>
 
   <xpath expr="//div[@id='products_grid_before']" position="attributes">
-      <attribute name="class">col-md-3 hidden-xs</attribute>
+      <attribute name="class">col-md-2 hidden-xs</attribute>
   </xpath>
   
   <xpath expr="//div[@id='products_grid']" position="attributes">
-      <attribute name="class">col-md-6</attribute>
+      <attribute name="class">col-md-7</attribute>
   </xpath>
 
   
@@ -46,7 +46,13 @@
   <xpath expr="//section" position="attributes">
       <attribute name="style">padding-right:180px;</attribute>
   </xpath>
-  
+
+  <xpath expr="//div[@class='product_price']" position="before">
+      <div class="text-info oe_subdescription">
+        <div itemprop="description" t-field="product.mini_description"/>
+      </div>
+  </xpath>
+
 </template>
 
 

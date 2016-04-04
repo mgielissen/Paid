@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="html_builder_editor" inherit_id="website.assets_editor" name="HTML Builder Resources">
+            <xpath expr="/t" position="inside">
+                <script type="text/javascript" src="/website_color_picker/static/src/js/website.color.picker.js" />
+            </xpath>
+        </template>
+
+        <template id="website_color_picker_options" name="Website Colour Picker Options" inherit_id="website.snippet_options">
+            <xpath expr="//div" position="after">
+                <div data-js='pickbgcolour' data-selector="div, section">
+                    <li data-colourbg="">
+                        <a><i class="fa fa-paint-brush"/>Custom Background Colour</a>
+                    </li>
+                </div>
+                <div data-js='pickfontcolour' data-selector="div, section">
+		    <li data-colourfont="">
+		        <a><i class="fa fa-paint-brush"/>Custom Font Colour</a>
+                    </li>
+                </div>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
