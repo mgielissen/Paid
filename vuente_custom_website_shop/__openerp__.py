@@ -5,8 +5,6 @@
 	'website': 'http://www.vuente.com',
     'category': "Tools",
     'depends': ['website_sale','vuente_how_to_use_odoo_support_menu'],
-    'currency': 'EUR',
-    'price': 10.00,
     'data': [
         'views/website_templates.xml',
     ],

@@ -10,7 +10,7 @@ var ajax = require('web.ajax');
 var core = require('web.core');
 var qweb = core.qweb;
 
-ajax.loadXML('/website_color_picker/static/src/xml/website_color_picker_modal.xml', qweb);
+ajax.loadXML('/website_color_picker/static/src/xml/website_color_picker_modal2.xml', qweb);
 
 options.registry.pickbgcolour = options.Class.extend({
     colourbg: function(type) {
