@@ -1,6 +1,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="website_color_picker.color_picker_modal">
-        <div class="modal fade" id="oe_social_share_modal">
+        <div class="modal fade" id="oe_pick_color_modal">
             <div class="modal-dialog modal-content">
                 <div class="modal-header alert alert-info mb0">
                     <button type="button" class="close" data-dismiss="modal">
@@ -16,14 +16,37 @@
                 </div>
                 <div class="modal-footer">
 		    <button id="cancel" data-dismiss="modal" class="btn btn-primary">Cancel</button>
-		    <button id="sub_map"  class="btn btn-danger">Save</button>
+		    <button id="submit_color"  class="btn btn-danger">Save</button>
                 </div>
             </div>
         </div>
     </t>
 
+    <t t-name="website_color_picker.color_background_picker_modal">
+        <div class="modal fade" id="oe_pick_background_modal">
+            <div class="modal-dialog modal-content">
+                <div class="modal-header alert alert-info mb0">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">Select a colour</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="colorpicker">Pick Colour</label>
+                        <input id="colorpick" type="color" class="form-control"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+		    <button id="cancel" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+		    <button id="submit_background_color"  class="btn btn-danger">Save</button>
+                </div>
+            </div>
+        </div>
+    </t>
+    
     <t t-name="website_color_picker.pick_font_modal">
-        <div class="modal fade" id="oe_social_share_modal">
+        <div class="modal fade" id="oe_pick_font_family_modal">
             <div class="modal-dialog modal-content">
                 <div class="modal-header alert alert-info mb0">
                     <button type="button" class="close" data-dismiss="modal">
@@ -52,7 +75,7 @@
                 </div>
                 <div class="modal-footer">
 		    <button id="cancel" data-dismiss="modal" class="btn btn-primary">Cancel</button>
-		    <button id="sub_map"  class="btn btn-danger">Save</button>
+		    <button id="submit_family"  class="btn btn-danger">Save</button>
                 </div>
             </div>
         </div>
